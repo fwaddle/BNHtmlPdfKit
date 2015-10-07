@@ -97,18 +97,18 @@
 
 + (BNHtmlPdfKit *)saveUrlAsPdf:(NSURL *)url pageHeader:(NSString *)pageHeader pageFooter:(NSString *)pageFooter success:(void (^)(NSData *pdfData))completion failure:(void (^)(NSError *error))failure {
 
-  BNHtmlPdfKit *pdfKit = 	BNHtmlPdfKit *pdfKit = [[BNHtmlPdfKit alloc] initWithPageSize:[BNHtmlPdfKit defaultPageSize] isLandscape:NO];
+  BNHtmlPdfKit *pdfKit = [[BNHtmlPdfKit alloc] initWithPageSize:[BNHtmlPdfKit defaultPageSize] isLandscape:NO];
   pdfKit.dataCompletionBlock = completion;
   pdfKit.failureBlock = failure;
   
   if (pageHeader) {
     pdfKit.headerWebView = [[UIWebView alloc] init];
-    [pdfKit.headerWebView loadHTMLString:pageHeader baseURL:self.baseUrl];
+    [pdfKit.headerWebView loadHTMLString:pageHeader baseURL:pdfKit.baseUrl];
   }
   
   if (pageFooter) {
     pdfKit.footerWebView = [[UIWebView alloc] init];
-    [pdfKit.footerWebView loadHTMLString:pageFooter baseURL:self.baseUrl];
+    [pdfKit.footerWebView loadHTMLString:pageFooter baseURL:pdfKit.baseUrl];
   }
 
   [pdfKit saveUrlAsPdf:url toFile:nil];
