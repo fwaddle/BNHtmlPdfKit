@@ -115,6 +115,17 @@ Creates a BNHtmlPdfKit object to save a URL as PDF.
 + (BNHtmlPdfKit *)saveUrlAsPdf:(NSURL *)url success:(void (^)(NSData *pdfData))completion failure:(void (^)(NSError *error))failure;
 
 /**
+ Creates a BNHtmlPdfKit object to save a URL as PDF.
+ 
+ @param url URL to save PDF of.
+ @param pageHeader The header to add to each page. Max 50 px
+ @param pageFooter The footer to add to each page. Max 50 px
+ @param completion Block to be notified when PDF data is generated.
+ @param failure Block to be notified of failure.
+ */
++ (BNHtmlPdfKit *)saveUrlAsPdf:(NSURL *)url pageHeader:(NSString *)pageHeader pageFooter:(NSString *)pageFooter success:(void (^)(NSData *pdfData))completion failure:(void (^)(NSError *error))failure;
+
+/**
 Creates a BNHtmlPdfKit object to save a URL as PDF with BNPageSize.
 
 @param url URL to save PDF of.
